@@ -15,7 +15,7 @@ public class EmployeeReminderService {
     public  CompletableFuture<Void> sendReminderToEmployee() {
 
         Executor executor=Executors.newFixedThreadPool(5);
-
+        // thenApplyAsync will use execute after the previous is completed and reuse the result
         CompletableFuture<Void> voidCompletableFuture = CompletableFuture.supplyAsync(() -> {
             System.out.println("fetchEmployee : " + Thread.currentThread().getName());
             return EmployeeDatabase.fetchEmployees();
